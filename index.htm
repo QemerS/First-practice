@@ -11,6 +11,16 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        // soz daxil edildikden sonra herflerinin
+        // arasina + isaresi qoymaqla sozu qaytaran method yazin.
+        function plus() {
+            const word = prompt('soz daxil edin');
+            console.log(typeof word);
+            let altered_word = [...word.split('')];
+            alert(`The output: ${altered_word.join('+')}`);
+        }
+        plus();
+    </script>
 </body>
 </html>
