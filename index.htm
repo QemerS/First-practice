@@ -20,7 +20,44 @@
             let altered_word = [...word.split('')];
             alert(`The output: ${altered_word.join('+')}`);
         }
-        plus();
+        // plus();
+
+        // Toplama oyunu. Random olaraq bize 1-100 arasi 2 eded gelir.
+        // Bizden hemin ededlerin cemi sorusulur.
+        // Eger cemi duz daxil etmisikse ekrana 'Duzdur' cixarir ve
+        // bizden davam edib-etmeyeceyimizi sorusur.
+        // her duz cavaba gore 5 xal verilir.
+        // Sehv cavaba gore 2 xal cixilir
+        // Davam etmek istemedimizde ekrana xal, duzgun/ sehv cavablarin
+        // sayini xiarir. 
+        
+        let xal = 0;
+        let duzCavablarinSayi = 0;
+        let sehvCavablarinSayi = 0;
+        function oyunuOyna() {
+            const ilk_random_eded = parseInt(Math.random() * (100 - 1) + 1);
+            const ikinci_random_eded = parseInt(Math.random() * (100 - 1) + 1);
+            const istifacenininCavabi = parseInt(prompt(`${ilk_random_eded} + ${ikinci_random_eded} = ?`));
+            const cem = ilk_random_eded + ikinci_random_eded;
+
+            if (istifacenininCavabi === cem) {
+                alert('Duzdur!')
+                duzCavablarinSayi += 1;
+                xal += 5;
+            } else {
+                alert('Sehvdir')
+                sehvCavablarinSayi += 1;
+                xal -= 2;
+            }
+            const davamYaTamam = confirm('Davam etmek isterdinizmi?');
+            if (davamYaTamam) {
+                oyunuOyna();
+            } else {
+                alert((`Siz ${xal} xal topladiniz. Duz cavablarinizin sayi ${duzCavablarinSayi},
+                        Sehv cavablarinizin sayi ${sehvCavablarinSayi}`));
+            }
+        }
+        oyunuOyna();
     </script>
 </body>
 </html>
