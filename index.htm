@@ -57,7 +57,30 @@
                         Sehv cavablarinizin sayi ${sehvCavablarinSayi}`));
             }
         }
-        oyunuOyna();
+        // oyunuOyna();
+
+
+        // Musteri terefinden daxil edilen maas ve artim faizi vasitesile
+        // musterinin 5 il erzinde maas neticelerini ekrana yazdir.
+        
+        let maas, artimFaizi, illikMaas;
+        illikMaas = 0;
+        maas = parseInt(prompt('maasinizi daxil edin'));
+        artimFaizi = parseInt(prompt('artim faizini daxil edin'));
+        let netice = `${maas}man miqdarli maasiniz ${artimFaizi}% artarsa.`;
+        const artimNeticesi = document.createElement('ul');
+        for (let i = 1; i <= 6; i++) {
+            const li = document.createElement('li');
+            li.textContent = netice;
+            if (i === 1) {
+                li.style.listStyle = 'none';
+            }
+            artimNeticesi.appendChild(li);
+            maas += maas * (artimFaizi / 100);
+            illikMaas = maas;
+            netice = `${i}ci il maasiniz ${illikMaas}man olar`;
+        }
+        document.querySelector('body').appendChild(artimNeticesi);
     </script>
 </body>
 </html>
