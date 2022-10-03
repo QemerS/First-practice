@@ -90,7 +90,47 @@
         // (Məs:a=5,b=6.Nəticə a=6,b=5).
         let a =5, b=6;
         [a, b] = [b, a]
-        console.log(a,b);
+        // console.log(a,b);
+
+
+
+
+        // Dayanacaqda 3 neqliyyat vasitesi - taksi,avtobus,yuk masini dayana biler.
+        // Taksi 1 saata 5azn, avtobus 6azn, yuk masini 7 azn odeyir.
+        // Taksi bir saatdan sonraki her saat ucun odenilecek meblegin
+        // 20%-ni, avtobus 25%-ni, yuk masini 30%-ni odemelidir.
+        // (1 satdan az odenis olmur.
+        // saat tamam olmayisa tamamda odediyi pulu odeyir)
+        class Vehicle {
+            constructor(name, ilkSaatOdenis, sonrakiSaatlar) {
+                this.name = name;
+                if (name === 'taksi') {
+                    this.ilkSaatOdenis = 5,
+                    this.sonrakiSaatlar = 1
+                }
+                if (name === 'avtobus') {
+                    this.ilkSaatOdenis = 6,
+                    this.sonrakiSaatlar = this.ilkSaatOdenis*0.25
+                }
+                if (name === 'yukMasini') {
+                    this.ilkSaatOdenis = 7,
+                    this.sonrakiSaatlar = this.ilkSaatOdenis*0.3
+                }
+            }
+            Odeme (saatlar) {
+            let odenilecek = 0;
+            for (let saat = 0; saat <= saatlar; saat++) {
+                if (saat <= 1) {
+                    odenilecek += this.ilkSaatOdenis;
+                } else {
+                    odenilecek += this.sonrakiSaatlar;
+                }
+            }
+            return odenilecek;
+            }
+        }
+        const avtobus = new Vehicle('avtobus');
+        // console.log(avtobus.Odeme(0));
     </script>
 </body>
 </html>
